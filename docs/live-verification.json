@@ -1,0 +1,310 @@
+{
+  "verifiedAt": "2026-10-19T10:56:08.832Z",
+  "address": "0x37b36cBdB694c3B76Bf7F482917d5e774c4CF409",
+  "sourceMatch": true,
+  "sourceSha256": "b529e637210aa1cb042e7f0d6c33b7a6a341002fc68734620ff2f55bdba63091",
+  "crossAccountEvaluation": true,
+  "publicCommitments": 6,
+  "policies": [
+    {
+      "id": "incident-response-v1",
+      "owner": "0x9e344d9103d51063eff1291628c156dc62b703b4",
+      "policy": {
+        "criteria": [
+          {
+            "id": "ACK",
+            "requirement": "The on-call responder must acknowledge the incident within 30 minutes of detection."
+          },
+          {
+            "id": "NOTICE",
+            "requirement": "A customer incident notice must be published within 2 hours of detection."
+          },
+          {
+            "id": "REVIEW",
+            "requirement": "A post-incident review naming the root cause and a specific corrective action must be recorded within 72 hours of detection."
+          }
+        ],
+        "name": "Incident response evidence standard",
+        "scope": "Assess the submitted public incident record for the named Aurora service incident during its stated UTC period. Synthetic pilot documents describe simulated events."
+      },
+      "sha256": "41bc538688561b30442268698bf639efd6ff51548e97eb6b4f88f603074ed8e7"
+    }
+  ],
+  "assessments": [
+    {
+      "history": [
+        {
+          "result": {
+            "error": "",
+            "evidence_sha256": "2dab8aaaff48ace9a6e822e085006c10fc773c4021cf775ad74095593da80d83",
+            "findings": [
+              {
+                "id": "ACK",
+                "state": "SATISFIED"
+              },
+              {
+                "id": "NOTICE",
+                "state": "SATISFIED"
+              },
+              {
+                "id": "REVIEW",
+                "state": "SATISFIED"
+              }
+            ],
+            "synthetic": true,
+            "verdict": "PASS"
+          },
+          "reviewer": "0x9e344d9103d51063eff1291628c156dc62b703b4",
+          "revision": 1,
+          "sha256": "2dab8aaaff48ace9a6e822e085006c10fc773c4021cf775ad74095593da80d83",
+          "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/b13e96f3dfa304e91d7534f31a7b67b97e873fad/evidence/pass.json"
+        }
+      ],
+      "id": "inc-42",
+      "owner": "0x9e344d9103d51063eff1291628c156dc62b703b4",
+      "period": "2026-10-01 UTC",
+      "policy_id": "incident-response-v1",
+      "revision": 1,
+      "sha256": "2dab8aaaff48ace9a6e822e085006c10fc773c4021cf775ad74095593da80d83",
+      "subject": "Aurora service, incident INC-42",
+      "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/b13e96f3dfa304e91d7534f31a7b67b97e873fad/evidence/pass.json"
+    },
+    {
+      "history": [
+        {
+          "result": {
+            "error": "",
+            "evidence_sha256": "4f4a8e8a0dac27a4fef0cf965e85793ef1c4a06f2d693c2680c409337e71b4fe",
+            "findings": [
+              {
+                "id": "ACK",
+                "state": "VIOLATED"
+              },
+              {
+                "id": "NOTICE",
+                "state": "VIOLATED"
+              },
+              {
+                "id": "REVIEW",
+                "state": "SATISFIED"
+              }
+            ],
+            "synthetic": true,
+            "verdict": "FAIL"
+          },
+          "reviewer": "0xe74b0c822c1af78046ca0304b2aa69160c6cc3b8",
+          "revision": 1,
+          "sha256": "4f4a8e8a0dac27a4fef0cf965e85793ef1c4a06f2d693c2680c409337e71b4fe",
+          "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/b13e96f3dfa304e91d7534f31a7b67b97e873fad/evidence/fail.json"
+        }
+      ],
+      "id": "inc-43",
+      "owner": "0x9e344d9103d51063eff1291628c156dc62b703b4",
+      "period": "2026-10-01 UTC",
+      "policy_id": "incident-response-v1",
+      "revision": 1,
+      "sha256": "4f4a8e8a0dac27a4fef0cf965e85793ef1c4a06f2d693c2680c409337e71b4fe",
+      "subject": "Aurora service, incident INC-43",
+      "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/b13e96f3dfa304e91d7534f31a7b67b97e873fad/evidence/fail.json"
+    },
+    {
+      "history": [
+        {
+          "result": {
+            "error": "",
+            "evidence_sha256": "0952554033b4cfaca96ba3826e7e7ff3b2fddf6b36f7e39c2d039a5ff6ebf66c",
+            "findings": [
+              {
+                "id": "ACK",
+                "state": "SATISFIED"
+              },
+              {
+                "id": "NOTICE",
+                "state": "UNKNOWN"
+              },
+              {
+                "id": "REVIEW",
+                "state": "SATISFIED"
+              }
+            ],
+            "synthetic": true,
+            "verdict": "INCONCLUSIVE"
+          },
+          "reviewer": "0x9e344d9103d51063eff1291628c156dc62b703b4",
+          "revision": 1,
+          "sha256": "0952554033b4cfaca96ba3826e7e7ff3b2fddf6b36f7e39c2d039a5ff6ebf66c",
+          "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/b13e96f3dfa304e91d7534f31a7b67b97e873fad/evidence/unknown.json"
+        }
+      ],
+      "id": "inc-44",
+      "owner": "0x9e344d9103d51063eff1291628c156dc62b703b4",
+      "period": "2026-10-01 UTC",
+      "policy_id": "incident-response-v1",
+      "revision": 1,
+      "sha256": "0952554033b4cfaca96ba3826e7e7ff3b2fddf6b36f7e39c2d039a5ff6ebf66c",
+      "subject": "Aurora service, incident INC-44",
+      "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/b13e96f3dfa304e91d7534f31a7b67b97e873fad/evidence/unknown.json"
+    }
+  ],
+  "transactions": [
+    {
+      "hash": "0x581791e7d7c47cdd35b37802f7a8bbc120a5761fe18d7a57e46de22a9ed3e3ae",
+      "label": "Deploy PolicyProof",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+        "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree",
+        "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "idle",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle"
+      }
+    },
+    {
+      "label": "Lock incident policy",
+      "hash": "0x8a2847d363a7d05ea728e75fdecfbb87f738776ae1c65c94ad3d8897d6464a7b",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+        "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+        "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree"
+      }
+    },
+    {
+      "label": "Submit INC-42 evidence",
+      "assessment": "inc-42",
+      "hash": "0x16990329413135e213dd0720a926628580f139e5f8dcc88c45d1baee1c3735d4",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "idle",
+        "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+        "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "idle",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree"
+      }
+    },
+    {
+      "label": "Submit INC-43 evidence",
+      "assessment": "inc-43",
+      "hash": "0x489dd59ec33c7914bd971c0912c9ef6a0848ec00b564259aee12910c321d17d0",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+        "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree"
+      }
+    },
+    {
+      "label": "Submit INC-44 evidence",
+      "assessment": "inc-44",
+      "hash": "0xb066c422b3c6a01ef10661578e467c79532afc7f37a38f9e7d662a7b10537628",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "idle",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+        "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "idle",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree"
+      }
+    },
+    {
+      "label": "Install final source fix",
+      "hash": "0x96403c803c78fb6bc5f3f1905c9df073f91683082b3347018f5f042e4a5e1529",
+      "upgrade": true,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": true
+    },
+    {
+      "label": "Evaluate INC-42: PASS",
+      "assessment": "inc-42",
+      "hash": "0x88e6e484fa2ed0154d05821c0a1546e26226b893fa3ae84c3ec878c10998a6bf",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+        "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "idle",
+        "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+        "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "idle"
+      }
+    },
+    {
+      "label": "Evaluate INC-44: INCONCLUSIVE",
+      "assessment": "inc-44",
+      "hash": "0x0289fb8155a3c3a8ef2c611873c776793719f8c9447194c144ce6f6454f36667",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+        "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "idle",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle"
+      }
+    },
+    {
+      "label": "Install current source with consensus diagnostics",
+      "hash": "0xcdb119f71c07d37624a15e657d7b8421db1f23809ff7f9c7e912d763577b7e12",
+      "upgrade": true,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": true
+    },
+    {
+      "label": "Cross-account evaluation INC-43: FAIL",
+      "assessment": "inc-43",
+      "hash": "0x3e458425e665b2089175c9c74e70c6d87781aa8af3a10fa530236171e5278b55",
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+        "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "idle",
+        "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+        "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "disagree",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree"
+      }
+    },
+    {
+      "label": "Initial INC-43 evaluation: no consensus, no state change",
+      "assessment": "inc-43",
+      "hash": "0xab84040cebdce7f30b4fdb46bfb08e090aa31c8481ba0bd862365db50a4bcf15",
+      "expectedError": true,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_DISAGREE",
+      "leader_only": false,
+      "execution": "SUCCESS",
+      "votes": {
+        "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "idle",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "disagree",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "disagree",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "idle",
+        "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "disagree"
+      }
+    }
+  ]
+}

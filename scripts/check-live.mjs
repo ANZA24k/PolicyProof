@@ -1,0 +1,16 @@
+import {createClient} from '../web/node_modules/genlayer-js/dist/index.js';
+import {studionet} from '../web/node_modules/genlayer-js/dist/chains/index.js';
+import {TransactionHashVariant} from '../web/node_modules/genlayer-js/dist/types/index.js';
+import {assertSuccess} from '../web/src/safety.mjs';
+import fs from 'node:fs';import {createHash} from 'node:crypto';
+const root=new URL('../',import.meta.url),d=JSON.parse(fs.readFileSync(new URL('web/src/deployment.json',root)));
+const c=createClient({chain:studionet,endpoint:d.rpc});
+const read=async(functionName,args=[])=>JSON.parse(await c.readContract({address:d.address,functionName,args,transactionHashVariant:TransactionHashVariant.LATEST_FINAL}));
+if(await c.getContractCode(d.address)!==fs.readFileSync(new URL('contracts/policyproof.py',root),'utf8'))throw Error('Deployed source mismatch');
+const index=await read('get_index');const policies=await Promise.all(index.policies.map(id=>read('get_policy',[id]))),assessments=await Promise.all(index.assessments.map(id=>read('get_assessment',[id])));
+const transactions=[];
+for(const t of [{hash:d.deploymentTransaction,label:'Deploy PolicyProof'},...d.transactions]){const receipt=await c.waitForTransactionReceipt({hash:t.hash,status:'FINALIZED',retries:30,interval:3000});if(t.upgrade){if((receipt.statusName||receipt.status_name)!=='FINALIZED')throw Error('Code update not finalized')}else if(t.expectedError){let rejected=false;try{assertSuccess(receipt)}catch{rejected=true}if(!rejected)throw Error('Expected rejected write succeeded')}else assertSuccess(receipt);transactions.push({...t,status:receipt.statusName||receipt.status_name,consensus:receipt.result_name,leader_only:receipt.leader_only,execution:receipt.consensus_data?.leader_receipt?.filter(r=>r.mode==='leader').at(-1)?.execution_result,votes:receipt.consensus_data?.votes});}
+let commitments=0;async function verify(ref){const response=await fetch(ref.url,{redirect:'error'});if(!response.ok)throw Error('HTTP '+response.status);const bytes=Buffer.from(await response.arrayBuffer());if(createHash('sha256').update(bytes).digest('hex')!==ref.sha256)throw Error('Public evidence hash mismatch');commitments++;return JSON.parse(ref.url.endsWith('.json')?bytes.toString():'null')}
+for(const a of assessments){if(a.id==='hash-mismatch')continue;const b=await verify(a);for(const s of b.sources)await verify(s);const p=policies.find(p=>p.id===a.policy_id);if(b.policy_sha256!==p.sha256||b.assessment_id!==a.id||b.subject!==a.subject||b.period!==a.period)throw Error('Binding mismatch');}
+if(d.expectedVerdicts)for(const [id,want]of Object.entries(d.expectedVerdicts)){const a=assessments.find(a=>a.id===id);if(a?.history.at(-1)?.result.verdict!==want)throw Error('Unexpected verdict '+id)}
+const result={verifiedAt:new Date().toISOString(),address:d.address,sourceMatch:true,sourceSha256:d.sourceSha256,crossAccountEvaluation:assessments.some(a=>a.history.some(h=>h.reviewer.toLowerCase()!==a.owner.toLowerCase())),publicCommitments:commitments,policies,assessments,transactions};fs.writeFileSync(new URL('docs/live-verification.json',root),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({sourceMatch:true,publicCommitments:commitments,transactions:transactions.length,assessments:assessments.map(a=>({id:a.id,revision:a.revision,result:a.history.at(-1)?.result}))},null,2));

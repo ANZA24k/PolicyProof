@@ -131,3 +131,14 @@ def test_invalid_policy(env,mutation):
     elif mutation=='oversize':p['criteria'][0]['requirement']='x'*501
     else:p['extra']='x'
     with vm.expect_revert():c.create_policy('bad',C(p))
+
+
+def test_multiple_verbatim_excerpts_without_invented_text(env):
+    vm,c=env;a=copy.deepcopy(ANSWER)
+    a['findings'][1]['quote']='INC-42 detected at 09:00 UTC on 2026-10-01.\nCustomer notice published at 09:40 UTC.'
+    prepare(vm,c,answer=a);c.evaluate('case-good');assert result(c)['verdict']=='PASS';assert vm.run_validator()
+
+@pytest.mark.parametrize('quote',['Customer notice published at 09:40 UTC.\nINC-42 detected at 09:00 UTC on 2026-10-01.', 'INC-42 detected at 09:00 UTC on 2026-10-01.\nFabricated notice at 09:40 UTC.', 'INC-42 detected at 09:00 UTC on 2026-10-01. ... Customer notice published at 09:40 UTC.'])
+def test_excerpt_grounding_rejects_reordering_fabrication_and_ellipsis(env,quote):
+    vm,c=env;a=copy.deepcopy(ANSWER);a['findings'][1]['quote']=quote;prepare(vm,c,answer=a)
+    with vm.expect_revert('Temporary failure'):c.evaluate('case-good')
