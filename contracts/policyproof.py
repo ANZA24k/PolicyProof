@@ -152,7 +152,8 @@ POLICY: ''' + canonical(policy) + '\nSUBJECT: ' + assessment['subject'] + '\nPER
     try:
         answer = gl.nondet.exec_prompt(prompt, response_format='json')
         findings = normalize(parse(canonical(answer), 8000), policy, documents)
-    except Exception:
+    except Exception as exc:
+        print('PolicyProof model validation failed:', str(exc))
         return failure('RETRYABLE_MODEL')
     return {'verdict': derive(findings), 'error': '', 'findings': findings, 'synthetic': bundle['synthetic'], 'evidence_sha256': assessment['sha256']}
 
@@ -236,7 +237,11 @@ class PolicyProof(gl.Contract):
             if not isinstance(proposal, gl.vm.Return):
                 return False
             independent = leader()  # Fresh web fetches, hashes and LLM assessment on each validator.
-            return canonical(proposal.calldata) == canonical(independent)
+            agree = canonical(proposal.calldata) == canonical(independent)
+            if not agree:
+                print('PolicyProof independent mismatch:', canonical(independent))
+                print('PolicyProof leader proposal:', canonical(proposal.calldata))
+            return agree
         result = gl.vm.run_nondet_unsafe(leader, validator)
         require(isinstance(result, dict) and result.get('verdict') in ['PASS', 'FAIL', 'INCONCLUSIVE'], 'Invalid consensus result')
         require(result.get('error') not in ['RETRYABLE_RETRIEVAL', 'RETRYABLE_MODEL'], 'Temporary failure: retry same commitment; no revision consumed')
