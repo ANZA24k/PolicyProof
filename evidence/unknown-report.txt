@@ -1,0 +1,6 @@
+SYNTHETIC DEMONSTRATION — not a real organization or incident.
+Subject: Aurora service, incident INC-44. Period: 2026-10-01 UTC.
+Incident detected: 2026-10-01 09:00 UTC.
+On-call acknowledgement: 2026-10-01 09:10 UTC, recorded by responder C.
+The report contains no customer notice publication record or timestamp. It makes no claim that a notice was or was not published.
+Post-incident review: 2026-10-02 15:00 UTC. It names a queue backlog as the root cause and records a queue-depth alert as the corrective action.

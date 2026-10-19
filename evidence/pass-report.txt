@@ -1,0 +1,7 @@
+SYNTHETIC DEMONSTRATION — not a real organization or incident.
+Subject: Aurora service, incident INC-42. Period: 2026-10-01 UTC.
+Incident detected: 2026-10-01 09:00 UTC.
+On-call acknowledgement: 2026-10-01 09:12 UTC, recorded by responder A.
+Customer notice published: 2026-10-01 09:40 UTC, status-page record NOTICE-42.
+Customer notice text: Aurora requests are experiencing errors. Investigation is in progress; the next update will be published within one hour.
+Post-incident review: 2026-10-02 15:00 UTC. It names the database connection leak as the root cause and records a connection-pool limit as the corrective action.
