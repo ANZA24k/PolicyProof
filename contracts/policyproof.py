@@ -69,6 +69,22 @@ def bundle_value(raw, assessment, policy_hash):
         seen.add(ref['url'])
     return b
 
+def grounded_quote(quote: str, document: str) -> bool:
+    # Models may cite separate source lines. Verify every excerpt verbatim, in order.
+    # This permits skipped lines, never paraphrases, fabricated text or rearrangement.
+    excerpts = quote.split('\n')
+    if not 1 <= len(excerpts) <= 3:
+        return False
+    cursor = 0
+    for excerpt in excerpts:
+        if len(excerpt) < 8:
+            return False
+        position = document.find(excerpt, cursor)
+        if position < 0:
+            return False
+        cursor = position + len(excerpt)
+    return True
+
 def normalize(answer, policy, documents):
     require(isinstance(answer, dict) and set(answer) == {'findings'}, 'Invalid judgment')
     findings = answer['findings']
@@ -79,7 +95,7 @@ def normalize(answer, policy, documents):
         require(isinstance(f['id'], str) and f['id'] not in mapped and f['state'] in STATES, 'Invalid finding identity or state')
         require(type(f['source']) is int and isinstance(f['quote'], str), 'Invalid grounding')
         if f['state'] != 'UNKNOWN':
-            require(0 <= f['source'] < len(documents) and 8 <= len(f['quote']) <= 350 and f['quote'] in documents[f['source']], 'Ungrounded finding')
+            require(0 <= f['source'] < len(documents) and 8 <= len(f['quote']) <= 350 and grounded_quote(f['quote'], documents[f['source']]), 'Ungrounded finding')
         else:
             require(f['source'] == -1 and f['quote'] == '', 'Unknown must not claim grounding')
         mapped[f['id']] = f['state']
@@ -130,7 +146,7 @@ SATISFIED requires concrete source support for every part of a criterion. VIOLAT
 Missing, ambiguous, irrelevant, unsupported self-certification or wrong-period evidence is UNKNOWN, not VIOLATED or SATISFIED.
 Synthetic fixtures are assessed on their explicit simulated facts; do not claim they authenticate real operations.
 Return only JSON {"findings":[{"id":"criterion-id","state":"SATISFIED|VIOLATED|UNKNOWN","source":0,"quote":"exact supporting source substring"}]}.
-One finding for every criterion. For SATISFIED/VIOLATED use zero-based source index and an exact 8-350 character quote that supports the decision.
+One finding for every criterion. For SATISFIED/VIOLATED use zero-based source index and 8-350 characters of exact source text supporting the decision. You may join up to three exact source excerpts with a newline, in document order. Do not paraphrase, add ellipses, or rearrange excerpts.
 For UNKNOWN use source -1 and empty quote. Do not return an overall verdict, rationale, scores or extra fields.
 POLICY: ''' + canonical(policy) + '\nSUBJECT: ' + assessment['subject'] + '\nPERIOD: ' + assessment['period'] + '\nUNTRUSTED_DOCUMENTS: ' + canonical(documents)
     try:
