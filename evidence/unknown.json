@@ -1,0 +1,14 @@
+{
+  "schema": "policyproof/v1",
+  "synthetic": true,
+  "assessment_id": "inc-44",
+  "policy_sha256": "41bc538688561b30442268698bf639efd6ff51548e97eb6b4f88f603074ed8e7",
+  "subject": "Aurora service, incident INC-44",
+  "period": "2026-10-01 UTC",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/87c38b078986a908ae5d6147cbc550c8af05b560/evidence/unknown-report.txt",
+      "sha256": "8fd0ac86ebd9bbb403308168175167c1449e49ce4817e784bd006bafce1ffff3"
+    }
+  ]
+}
