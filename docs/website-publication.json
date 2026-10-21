@@ -1,9 +1,13 @@
 {
   "project_id": "appgprj_6ad5ea8e2dec81919987299e328617b5",
-  "version_id": "appgprj_6ad5ea8e2dec81919987299e328617b5~appgver_4d43129a7cd081918cd830c3f51c0293",
-  "deployment_id": "appgdep_6ad5f7a0466881918f152bafcae9d1b4",
-  "source_commit": "44833099cbf69b8a5e99eb29d187e918e7f1ea11",
+  "version_id": "appgprj_6ad5ea8e2dec81919987299e328617b5~appgver_321a4737d660819181f18e393eeb7144",
+  "version_number": 2,
+  "deployment_id": "appgdep_6ad83558600c819191fe70204e77727c",
+  "source_commit": "80e714b784ecc5b56648ed26fac0bac7c6e64062",
+  "github_web_source_commit": "b7ba96317759a78d2036eaef390c7aba389cd4de",
   "status": "succeeded",
   "url": "https://policyproof.ansaf1st34.chatgpt.site",
-  "audience": "owner-private"
+  "audience": "public",
+  "audienceVerifiedAt": "2026-10-21T03:46:25.403Z",
+  "archive_sha256": "sha256:caeb15222264e1ab483878c6aee132da295a4a5b3926224167ca6d35ca571b08"
 }

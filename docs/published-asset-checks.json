@@ -1,0 +1,47 @@
+{
+  "verifiedAt": "2026-10-21T03:46:50.677Z",
+  "url": "https://policyproof.ansaf1st34.chatgpt.site",
+  "allFilesMatch": true,
+  "files": [
+    {
+      "path": "favicon.svg",
+      "sha256": "5129a4b4802bb7a5754a73226ed7458010dd413d0aa935979e59eeeea9c4f790",
+      "bytes": 304
+    },
+    {
+      "path": "index.html",
+      "sha256": "d33574f14cf4ecbcd3d245b2d8ba1a3c95101ab399a8df59c96c0796a3d44a58",
+      "bytes": 692
+    },
+    {
+      "path": "wallet-check.html",
+      "sha256": "b43f0a00c853898cf3ce26dc1ba9edf04ee932a37d7960ff9b677b3f3e6752d6",
+      "bytes": 439
+    },
+    {
+      "path": "assets/ccip-BRRS0kLp.js",
+      "sha256": "09c00c9b0e652c1355733cc0d7ea056802e449c399a8c3d9092f890568da77d1",
+      "bytes": 2921
+    },
+    {
+      "path": "assets/main-DfnGd86T.js",
+      "sha256": "8dd4118368d7ad1bb35f8618204b8a50e6484515a0d1477b390c5e28833aedb8",
+      "bytes": 549213
+    },
+    {
+      "path": "assets/wallet-flow-6Cl_KN9J.css",
+      "sha256": "d47dfce04d9a3104a49d459a59f253aef367a2787b1106dbb1db0de19ec1f905",
+      "bytes": 15097
+    },
+    {
+      "path": "assets/wallet-flow-gX6ycqj4.js",
+      "sha256": "3b8257fb9f8f43df0cb350d97095b8b533d82560912a1cda17dbe86a103ab9be",
+      "bytes": 4468
+    },
+    {
+      "path": "assets/walletCheck-DBGrMwwa.js",
+      "sha256": "dd98f991ec9d83a5106d4e779bfbfe12710a9b8ff5562d1f2df9d2df2ef3310b",
+      "bytes": 3196
+    }
+  ]
+}

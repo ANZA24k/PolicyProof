@@ -1,0 +1,122 @@
+{
+  "assessment": {
+    "id": "inc-42",
+    "subject": "Aurora service, incident INC-42",
+    "period": "2026-10-01 UTC"
+  },
+  "policy": {
+    "id": "incident-v2",
+    "owner": "0x8c2abcd84c20090045ed1159b95a8ae8e0ef1551",
+    "policy": {
+      "criteria": [
+        {
+          "id": "ACK",
+          "requirement": "The on-call responder must acknowledge the incident within 30 minutes of detection."
+        },
+        {
+          "id": "NOTICE",
+          "requirement": "A customer incident notice must be published within 2 hours of detection."
+        },
+        {
+          "id": "REVIEW",
+          "requirement": "A post-incident review naming the root cause and a specific corrective action must be recorded within 72 hours of detection."
+        }
+      ],
+      "name": "Incident response evidence standard",
+      "scope": "Assess the submitted public incident record for the named Aurora service incident during its stated UTC period. Synthetic pilot documents describe simulated events."
+    },
+    "sha256": "41bc538688561b30442268698bf639efd6ff51548e97eb6b4f88f603074ed8e7"
+  },
+  "review": {
+    "result": {
+      "error": "",
+      "evidence_sha256": "2dab8aaaff48ace9a6e822e085006c10fc773c4021cf775ad74095593da80d83",
+      "findings": [
+        {
+          "id": "ACK",
+          "quote": "Incident detected: 2026-10-01 09:00 UTC.\nOn-call acknowledgement: 2026-10-01 09:12 UTC, recorded by responder A.",
+          "source": 0,
+          "state": "SATISFIED"
+        },
+        {
+          "id": "NOTICE",
+          "quote": "Incident detected: 2026-10-01 09:00 UTC.\nCustomer notice published: 2026-10-01 09:40 UTC, status-page record NOTICE-42.",
+          "source": 0,
+          "state": "SATISFIED"
+        },
+        {
+          "id": "REVIEW",
+          "quote": "Incident detected: 2026-10-01 09:00 UTC.\nPost-incident review: 2026-10-02 15:00 UTC. It names the database connection leak as the root cause and records a connection-pool limit as the corrective action.",
+          "source": 0,
+          "state": "SATISFIED"
+        }
+      ],
+      "packet": {
+        "assessment_id": "inc-42",
+        "bundle": {
+          "sha256": "2dab8aaaff48ace9a6e822e085006c10fc773c4021cf775ad74095593da80d83",
+          "text": "{\n  \"schema\": \"policyproof/v1\",\n  \"synthetic\": true,\n  \"assessment_id\": \"inc-42\",\n  \"policy_sha256\": \"41bc538688561b30442268698bf639efd6ff51548e97eb6b4f88f603074ed8e7\",\n  \"subject\": \"Aurora service, incident INC-42\",\n  \"period\": \"2026-10-01 UTC\",\n  \"sources\": [\n    {\n      \"url\": \"https://raw.githubusercontent.com/ANZA24k/PolicyProof/87c38b078986a908ae5d6147cbc550c8af05b560/evidence/pass-report.txt\",\n      \"sha256\": \"1e907166edc9b684c48dd6b23be07d882207657b714a1fbf52240210ad9e9c24\"\n    }\n  ]\n}\n",
+          "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/0ecf54207aecd2877aac445e66771afac99082ce/evidence/pass.json"
+        },
+        "findings": [
+          {
+            "id": "ACK",
+            "quote": "Incident detected: 2026-10-01 09:00 UTC.\nOn-call acknowledgement: 2026-10-01 09:12 UTC, recorded by responder A.",
+            "source": 0,
+            "state": "SATISFIED"
+          },
+          {
+            "id": "NOTICE",
+            "quote": "Incident detected: 2026-10-01 09:00 UTC.\nCustomer notice published: 2026-10-01 09:40 UTC, status-page record NOTICE-42.",
+            "source": 0,
+            "state": "SATISFIED"
+          },
+          {
+            "id": "REVIEW",
+            "quote": "Incident detected: 2026-10-01 09:00 UTC.\nPost-incident review: 2026-10-02 15:00 UTC. It names the database connection leak as the root cause and records a connection-pool limit as the corrective action.",
+            "source": 0,
+            "state": "SATISFIED"
+          }
+        ],
+        "period": "2026-10-01 UTC",
+        "policy": {
+          "criteria": [
+            {
+              "id": "ACK",
+              "requirement": "The on-call responder must acknowledge the incident within 30 minutes of detection."
+            },
+            {
+              "id": "NOTICE",
+              "requirement": "A customer incident notice must be published within 2 hours of detection."
+            },
+            {
+              "id": "REVIEW",
+              "requirement": "A post-incident review naming the root cause and a specific corrective action must be recorded within 72 hours of detection."
+            }
+          ],
+          "name": "Incident response evidence standard",
+          "scope": "Assess the submitted public incident record for the named Aurora service incident during its stated UTC period. Synthetic pilot documents describe simulated events."
+        },
+        "policy_sha256": "41bc538688561b30442268698bf639efd6ff51548e97eb6b4f88f603074ed8e7",
+        "revision": 2,
+        "schema": "policyproof/audit-v2",
+        "sources": [
+          {
+            "index": 0,
+            "sha256": "1e907166edc9b684c48dd6b23be07d882207657b714a1fbf52240210ad9e9c24",
+            "text": "SYNTHETIC DEMONSTRATION — not a real organization or incident.\nSubject: Aurora service, incident INC-42. Period: 2026-10-01 UTC.\nIncident detected: 2026-10-01 09:00 UTC.\nOn-call acknowledgement: 2026-10-01 09:12 UTC, recorded by responder A.\nCustomer notice published: 2026-10-01 09:40 UTC, status-page record NOTICE-42.\nCustomer notice text: Aurora requests are experiencing errors. Investigation is in progress; the next update will be published within one hour.\nPost-incident review: 2026-10-02 15:00 UTC. It names the database connection leak as the root cause and records a connection-pool limit as the corrective action.\n",
+            "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/87c38b078986a908ae5d6147cbc550c8af05b560/evidence/pass-report.txt"
+          }
+        ],
+        "subject": "Aurora service, incident INC-42"
+      },
+      "packet_sha256": "c1e538d6881cf19bc28923e6d2e2c3b322e270a58fe885255376ba325a35deca",
+      "synthetic": true,
+      "verdict": "PASS"
+    },
+    "reviewer": "0x8c2abcd84c20090045ed1159b95a8ae8e0ef1551",
+    "revision": 2,
+    "sha256": "2dab8aaaff48ace9a6e822e085006c10fc773c4021cf775ad74095593da80d83",
+    "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/0ecf54207aecd2877aac445e66771afac99082ce/evidence/pass.json"
+  }
+}
