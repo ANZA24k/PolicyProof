@@ -1,0 +1,14 @@
+{
+  "schema": "policyproof/v1",
+  "synthetic": true,
+  "assessment_id": "invalid-source",
+  "policy_sha256": "41bc538688561b30442268698bf639efd6ff51548e97eb6b4f88f603074ed8e7",
+  "subject": "Aurora service, incident INC-42",
+  "period": "2026-10-01 UTC",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/ANZA24k/PolicyProof/e767a7d079576ac688b18b1f39b068499175ad29/evidence/v2/malformed-source.txt",
+      "sha256": "63991c87ce6051023ef75a688132ca14c6ff89398a6d3aae077f469694a82ddc"
+    }
+  ]
+}
