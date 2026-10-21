@@ -1,66 +1,96 @@
 {
-  "address": "0x37b36cBdB694c3B76Bf7F482917d5e774c4CF409",
+  "address": "0x910300ca08d112c7335691ED6C389746ca26Cf86",
   "rpc": "https://studio.genlayer.com/api",
   "explorer": "https://explorer-studio.genlayer.com",
+  "deploymentTransaction": "0x69c5968639ffea949d95db6ff59ffee08bcdd1d233b5fb5d1751610d794a294c",
+  "sourceCommit": "875cb95b2509a46fb990620fe83aeae2f89a5260",
+  "sourceSha256": "16696722bf334e50d0236e805c97b23f3a2fc1c837f1dc51be4c20513f249d5e",
   "transactions": [
     {
-      "label": "Lock incident policy",
-      "hash": "0x8a2847d363a7d05ea728e75fdecfbb87f738776ae1c65c94ad3d8897d6464a7b"
+      "label": "Lock immutable policy",
+      "hash": "0x5b16fe53e2d9a28863b24609adecdf66d9a8ae558e4bcdaf7208976daeb09dec"
     },
     {
-      "label": "Submit INC-42 evidence",
+      "label": "Submit invalid UTF-8 bundle",
       "assessment": "inc-42",
-      "hash": "0x16990329413135e213dd0720a926628580f139e5f8dcc88c45d1baee1c3735d4"
+      "hash": "0x22f56d8dc4b4092c7cbe32c578243ff91010a59401a22beb7209a0c4aac20dc6"
     },
     {
-      "label": "Submit INC-43 evidence",
-      "assessment": "inc-43",
-      "hash": "0x489dd59ec33c7914bd971c0912c9ef6a0848ec00b564259aee12910c321d17d0"
-    },
-    {
-      "label": "Submit INC-44 evidence",
-      "assessment": "inc-44",
-      "hash": "0xb066c422b3c6a01ef10661578e467c79532afc7f37a38f9e7d662a7b10537628"
-    },
-    {
-      "label": "Install final source fix",
-      "hash": "0x96403c803c78fb6bc5f3f1905c9df073f91683082b3347018f5f042e4a5e1529",
-      "upgrade": true
-    },
-    {
-      "label": "Evaluate INC-42: PASS",
+      "label": "Record permanent bundle encoding failure",
       "assessment": "inc-42",
-      "hash": "0x88e6e484fa2ed0154d05821c0a1546e26226b893fa3ae84c3ec878c10998a6bf"
+      "hash": "0xbe60a5b2ed2dae37af45bea93cb7c25655f72f1c4d698117fbad898f66cf1950"
     },
     {
-      "label": "Evaluate INC-44: INCONCLUSIVE",
+      "label": "Commit corrected revision two",
+      "assessment": "inc-42",
+      "hash": "0xd79344fb258079f6bd38b33585db47cf4e6dba2d7b8b05132b92613075852592"
+    },
+    {
+      "label": "Evaluate recovered revision two",
+      "assessment": "inc-42",
+      "hash": "0xec074370eed86d199aa7ac5b649d95943a46b1dbb850483509174641475144dd"
+    },
+    {
+      "label": "Submit violation evidence",
+      "assessment": "inc-43",
+      "hash": "0xf7ac40d60ed6a68ea0e1a9c36472559eaf41be1775ce65dfd8288876a70d69fc"
+    },
+    {
+      "label": "Commit changed source revision three",
+      "assessment": "inc-42",
+      "hash": "0x9cbc3f53db75ae3a461501e5ddcd85ec2a9f84c7ee77164ee4f94fee009c0bb1"
+    },
+    {
+      "label": "Submit missing-evidence case",
       "assessment": "inc-44",
-      "hash": "0x0289fb8155a3c3a8ef2c611873c776793719f8c9447194c144ce6f6454f36667"
+      "hash": "0x322372445d35d931d3288fdfe3312c409265b95aa6eed32d4984f746924a343f"
     },
     {
-      "label": "Install current source with consensus diagnostics",
-      "hash": "0xcdb119f71c07d37624a15e657d7b8421db1f23809ff7f9c7e912d763577b7e12",
-      "upgrade": true
+      "label": "Evaluate changed source revision three",
+      "assessment": "inc-42",
+      "hash": "0x40b38d5047e92f36e35854eea097a4679ece6ee18ac163c6f7bca09557c2b2a2"
     },
     {
-      "label": "Cross-account evaluation INC-43: FAIL",
+      "label": "Submit invalid source",
+      "assessment": "invalid-source",
+      "hash": "0x006d788c3582c9b4cbec6e15381edca223716d6f93b7fc40ca6d186658ca7ae5"
+    },
+    {
+      "label": "Evaluate explicit violation",
       "assessment": "inc-43",
-      "hash": "0x3e458425e665b2089175c9c74e70c6d87781aa8af3a10fa530236171e5278b55"
+      "hash": "0x03b6f8e992c5102ebd6db6d6410eaa26d55397d19ebc4fffb6dc32b5ac17e79c"
     },
     {
-      "label": "Initial INC-43 evaluation: no consensus, no state change",
-      "assessment": "inc-43",
-      "hash": "0xab84040cebdce7f30b4fdb46bfb08e090aa31c8481ba0bd862365db50a4bcf15",
+      "label": "Evaluate missing customer-notice evidence",
+      "assessment": "inc-44",
+      "hash": "0x39e5b692d22c3e898eff5c647d1725dd24a606a54f907ec399d3b723648db3b1"
+    },
+    {
+      "label": "Record permanent source encoding failure",
+      "assessment": "invalid-source",
+      "hash": "0x6c0c6c5b498fc6775378caa870638f1021046a7726141cb45b2894eb0e5e4fbe"
+    },
+    {
+      "label": "Commit corrected source revision two",
+      "assessment": "invalid-source",
+      "hash": "0xf8bd1ce79b3e9169b6ed3e7c99dff1d5991e01cc7e08f32e7552a5471cf609e0"
+    },
+    {
+      "label": "Reject repeated evaluation; history unchanged",
+      "assessment": "inc-42",
+      "hash": "0xafc784f1510095fbe2ef996dc96df40f1d041696aef46c4bbebe8cd8790224fb",
       "expectedError": true
+    },
+    {
+      "label": "Evaluate recovered source revision two",
+      "assessment": "invalid-source",
+      "hash": "0xa4848aeb62bfe35877d465580454a268f41839789110fdc4d34c623427e445c5"
     }
   ],
-  "deploymentTransaction": "0x581791e7d7c47cdd35b37802f7a8bbc120a5761fe18d7a57e46de22a9ed3e3ae",
-  "sourceCommit": "9fd06882f9451046dd6e71fd91b4094776da76d6",
-  "evidenceCommit": "b13e96f3dfa304e91d7534f31a7b67b97e873fad",
-  "sourceSha256": "b529e637210aa1cb042e7f0d6c33b7a6a341002fc68734620ff2f55bdba63091",
   "expectedVerdicts": {
     "inc-42": "PASS",
     "inc-43": "FAIL",
-    "inc-44": "INCONCLUSIVE"
+    "inc-44": "INCONCLUSIVE",
+    "invalid-source": "PASS"
   }
 }

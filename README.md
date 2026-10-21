@@ -4,8 +4,8 @@
 
 PolicyProof is a GenLayer Intelligent Contract and working web application for checking public operational evidence against a fixed policy. Organizations define a scope and explicit requirements. Participants commit public evidence with exact SHA-256 hashes. GenLayer leaders and validators independently retrieve the same documents, assess every criterion, and reach consensus on **PASS / FAIL / INCONCLUSIVE**.
 
-- Website: https://policyproof.ansaf1st34.chatgpt.site (owner-private initial publication)
-- Contract: https://explorer-studio.genlayer.com/address/0x37b36cBdB694c3B76Bf7F482917d5e774c4CF409
+- Website: https://policyproof.ansaf1st34.chatgpt.site (public)
+- Contract: https://explorer-studio.genlayer.com/address/0x910300ca08d112c7335691ED6C389746ca26Cf86
 - Network: GenLayer Studionet, chain 61999, RPC `https://studio.genlayer.com/api`
 - Source: [`contracts/policyproof.py`](contracts/policyproof.py)
 - Architecture and limits: [`docs/architecture.md`](docs/architecture.md)
@@ -20,8 +20,9 @@ Checking hashes and timestamps alone cannot determine whether a natural-language
 1. Open the website. No wallet is required to inspect finalized policies, evidence, criterion findings and revision histories.
 2. Select the synthetic incident cases. INC-42 meets the response policy; INC-43 contains explicit timing violations and an embedded prompt-injection attempt; INC-44 omits customer-notice evidence.
 3. Click **Verify public bytes** to independently hash the committed bundle and its source documents in your browser.
-4. For writes, connect your own MetaMask-compatible wallet on Studionet. Connecting requests accounts only. Review the exact public request separately before signing.
-5. Creating policies or assessments needs an administrator-allocated pilot slot. Anyone may evaluate a pending assessment. No rewards, deposits or token escrow are used.
+4. Open **Revision history → Stored audit packet**. Verify its hashes and criterion citations without refetching external sources, or download the complete audit JSON. INC-42 preserves an invalid-encoding first revision and two successful source snapshots.
+5. For writes, connect your own MetaMask-compatible wallet on Studionet. Connecting requests accounts only. Review the exact public request separately before signing.
+6. Creating policies or assessments needs an administrator-allocated pilot slot. Anyone may evaluate a pending assessment. No rewards, deposits or token escrow are used.
 
 The Studio built-in account deploys and exercises the contract inside Studio. Its key is never exported or put in the website. Visitors use their own wallet to sign website writes.
 
@@ -38,7 +39,7 @@ The Studio built-in account deploys and exercises the contract inside Studio. It
 
 ## Evidence schema
 
-Use a raw.githubusercontent.com URL pinned to a full Git commit. Every file must be at most 16,000 bytes. Supported extensions: `.json`, `.txt`, `.md`. Branch names, arbitrary hosts and query strings are rejected.
+Use a raw.githubusercontent.com URL pinned to a full Git commit. Every file must be at most 16,000 bytes; combined source snapshots are limited to 24,000 bytes per review. Supported extensions: `.json`, `.txt`, `.md`. Branch names, arbitrary hosts and query strings are rejected.
 
 ```json
 {
@@ -79,6 +80,12 @@ Tests use the official GenLayer Direct Mode VM, not a hand-built contract mock. 
 
 ## Boundaries
 
-A PASS assesses the committed documents under the locked policy; it is not independent authentication of real operations. All pilot incident documents are synthetic and visibly labeled. Missing or ambiguous support gives UNKNOWN; explicit contradictions give VIOLATED. Any VIOLATED criterion yields FAIL; otherwise any UNKNOWN yields INCONCLUSIVE; otherwise PASS. Integrity failures give INCONCLUSIVE with an error code. Temporary retrieval/model failures revert without consuming a revision and can be retried.
+A PASS assesses the committed documents under the locked policy; it is not independent authentication of real operations. All pilot incident documents are synthetic and visibly labeled. Missing or ambiguous support gives UNKNOWN; explicit contradictions give VIOLATED. Any VIOLATED criterion yields FAIL; otherwise any UNKNOWN yields INCONCLUSIVE; otherwise PASS. Integrity failures, including hash-verified invalid UTF-8, give INCONCLUSIVE with an error code. The owner can then commit a corrected revision; repeated evaluation of an already reviewed revision is rejected. Temporary retrieval/model failures revert without consuming a revision and can be retried.
 
 The pilot has finite reserved storage and three revisions per assessment. The website never substitutes fake success data when RPC reads fail. Studionet may reset and development code may be changed; verify deployed-source correspondence before relying on the pilot. See the architecture document for detailed resource and threat boundaries.
+
+## Steward reassessment
+
+See [the response and reproducible review path](docs/steward-response.md). Protocol v2 keeps bounded, SHA-256 committed audit packets containing the original policy, evidence bundle bytes, source snapshots, source indices and grounded quotations for each finding. Independent validators still repeat retrieval and assessment; their explanatory excerpts may differ while the accepted packet is checked against the independently retrieved sources.
+
+Browser wallet checks at `/wallet-check.html` are clearly labeled simulations using the production wallet flow. They do not claim real MetaMask execution. Real deployment and writes use Studio’s built-in account; no key is exported.

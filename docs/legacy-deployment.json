@@ -1,0 +1,66 @@
+{
+  "address": "0x37b36cBdB694c3B76Bf7F482917d5e774c4CF409",
+  "rpc": "https://studio.genlayer.com/api",
+  "explorer": "https://explorer-studio.genlayer.com",
+  "transactions": [
+    {
+      "label": "Lock incident policy",
+      "hash": "0x8a2847d363a7d05ea728e75fdecfbb87f738776ae1c65c94ad3d8897d6464a7b"
+    },
+    {
+      "label": "Submit INC-42 evidence",
+      "assessment": "inc-42",
+      "hash": "0x16990329413135e213dd0720a926628580f139e5f8dcc88c45d1baee1c3735d4"
+    },
+    {
+      "label": "Submit INC-43 evidence",
+      "assessment": "inc-43",
+      "hash": "0x489dd59ec33c7914bd971c0912c9ef6a0848ec00b564259aee12910c321d17d0"
+    },
+    {
+      "label": "Submit INC-44 evidence",
+      "assessment": "inc-44",
+      "hash": "0xb066c422b3c6a01ef10661578e467c79532afc7f37a38f9e7d662a7b10537628"
+    },
+    {
+      "label": "Install final source fix",
+      "hash": "0x96403c803c78fb6bc5f3f1905c9df073f91683082b3347018f5f042e4a5e1529",
+      "upgrade": true
+    },
+    {
+      "label": "Evaluate INC-42: PASS",
+      "assessment": "inc-42",
+      "hash": "0x88e6e484fa2ed0154d05821c0a1546e26226b893fa3ae84c3ec878c10998a6bf"
+    },
+    {
+      "label": "Evaluate INC-44: INCONCLUSIVE",
+      "assessment": "inc-44",
+      "hash": "0x0289fb8155a3c3a8ef2c611873c776793719f8c9447194c144ce6f6454f36667"
+    },
+    {
+      "label": "Install current source with consensus diagnostics",
+      "hash": "0xcdb119f71c07d37624a15e657d7b8421db1f23809ff7f9c7e912d763577b7e12",
+      "upgrade": true
+    },
+    {
+      "label": "Cross-account evaluation INC-43: FAIL",
+      "assessment": "inc-43",
+      "hash": "0x3e458425e665b2089175c9c74e70c6d87781aa8af3a10fa530236171e5278b55"
+    },
+    {
+      "label": "Initial INC-43 evaluation: no consensus, no state change",
+      "assessment": "inc-43",
+      "hash": "0xab84040cebdce7f30b4fdb46bfb08e090aa31c8481ba0bd862365db50a4bcf15",
+      "expectedError": true
+    }
+  ],
+  "deploymentTransaction": "0x581791e7d7c47cdd35b37802f7a8bbc120a5761fe18d7a57e46de22a9ed3e3ae",
+  "sourceCommit": "9fd06882f9451046dd6e71fd91b4094776da76d6",
+  "evidenceCommit": "b13e96f3dfa304e91d7534f31a7b67b97e873fad",
+  "sourceSha256": "b529e637210aa1cb042e7f0d6c33b7a6a341002fc68734620ff2f55bdba63091",
+  "expectedVerdicts": {
+    "inc-42": "PASS",
+    "inc-43": "FAIL",
+    "inc-44": "INCONCLUSIVE"
+  }
+}

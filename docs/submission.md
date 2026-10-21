@@ -12,17 +12,22 @@ PolicyProof verifies public operational evidence against locked policies. Organi
 ## Evidence
 
 - Repository: https://github.com/ANZA24k/PolicyProof
-- Current contract: https://explorer-studio.genlayer.com/address/0x37b36cBdB694c3B76Bf7F482917d5e774c4CF409
+- Current contract: https://explorer-studio.genlayer.com/address/0x910300ca08d112c7335691ED6C389746ca26Cf86
 - Source: https://github.com/ANZA24k/PolicyProof/blob/main/contracts/policyproof.py
 - Live verification: https://github.com/ANZA24k/PolicyProof/blob/main/docs/live-verification.json
 - Deployment provenance: https://github.com/ANZA24k/PolicyProof/blob/main/docs/deployment.md
 - CI: https://github.com/ANZA24k/PolicyProof/actions
-- Website: https://policyproof.ansaf1st34.chatgpt.site — initial owner-private publication; make public before submitting it for external review.
+- Website: https://policyproof.ansaf1st34.chatgpt.site — public access enabled.
 
 Submission category: **Projects**, because the application includes a real contract and integrated website. Do not submit as a standalone Intelligent Contract.
 
-## Before submission
+## Review path
 
-The website needs public audience access for stewards. Initial creation preserves the Sites default owner-private audience. No review, ranking, acceptance or points are promised.
+1. Open the public website and select INC-42, INC-43 and INC-44. Confirm PASS, FAIL and INCONCLUSIVE from finalized state.
+2. Click **Verify public bytes** to hash the commit-pinned bundle and source documents.
+3. Open **Revision history** for INC-42: revision one records `INVALID_UTF8`; revisions two and three retain separate successful evidence packets and different source commitments.
+4. Open **Stored audit packet** for each successful revision; click **Verify stored audit packet**. The packet, policy, bundle and source hashes and criterion quotations verify without an external fetch. Download audit JSON for independent reconstruction.
+5. Inspect `invalid-source` for permanent source-encoding failure and controlled correction.
+6. Browser wallet checks at `/wallet-check.html` explicitly simulate network/account changes, confirmation, rejection, failed execution and successful readback using production wallet code. The app's Connect wallet uses a real browser provider when installed. No MetaMask extension was available in the verification browser; actual MetaMask execution is not claimed. Real writes used Studio's built-in address.
 
-The deployed contract is a bounded pilot with admitted storage slots; evaluation is permissionless. Direct Mode covers cross-account authorization; an existing separate Studio account successfully evaluated INC-43 on-chain. Real MetaMask extension signing and browser visual QA were unavailable; see deployment.md for exact verification scope.
+See `steward-response.md`, `browser-verification.md`, `deployment.md`, and the machine-readable verification/publication records. Creation requires allocated pilot capacity; evaluation is permissionless. Cryptographic commitments authenticate submitted bytes, not truth or organizational origin. All demonstrations are synthetic.

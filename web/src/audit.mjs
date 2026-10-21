@@ -1,0 +1,17 @@
+// Canonical JSON matches the contract's Python ensure_ascii=True encoding.
+export function canonical(value){const ordered=v=>Array.isArray(v)?v.map(ordered):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,ordered(v[k])])):v;return JSON.stringify(ordered(value)).replace(/[\u007f-\uffff]/g,c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'));}
+export async function hashText(text){const bytes=new TextEncoder().encode(text);return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');}
+export function grounded(quote,document){const excerpts=quote.split('\n');if(excerpts.length<1||excerpts.length>3||[...quote].length>350)return false;let cursor=0;return excerpts.every(excerpt=>{const pos=document.indexOf(excerpt,cursor);if([...excerpt].length<8||pos<0)return false;cursor=pos+excerpt.length;return true;});}
+export async function verifyAudit({review,assessment,policy}){
+ const r=review.result,p=r.packet;if(!p||p.schema!=='policyproof/audit-v2')throw Error('No v2 audit packet in this historical review.');
+ if(await hashText(canonical(p))!==r.packet_sha256)throw Error('Audit packet SHA-256 mismatch');
+ if(p.assessment_id!==assessment.id||p.subject!==assessment.subject||p.period!==assessment.period||p.revision!==review.revision||p.policy_sha256!==policy.sha256||canonical(p.policy)!==canonical(policy.policy)||await hashText(canonical(p.policy))!==policy.sha256)throw Error('Audit policy or assessment binding mismatch');
+ if(p.bundle.url!==review.url||p.bundle.sha256!==review.sha256||await hashText(p.bundle.text)!==review.sha256)throw Error('Stored bundle SHA-256 mismatch');
+ const b=JSON.parse(p.bundle.text);if(b.assessment_id!==assessment.id||b.policy_sha256!==policy.sha256||b.subject!==assessment.subject||b.period!==assessment.period||b.schema!=='policyproof/v1'||typeof b.synthetic!=='boolean'||b.synthetic!==r.synthetic)throw Error('Stored bundle fields do not match');
+ if(!Array.isArray(p.sources)||p.sources.length!==b.sources.length||p.sources.length<1||p.sources.length>3||new TextEncoder().encode(p.bundle.text).length>16000)throw Error('Invalid stored source count or bundle size');
+ let total=0;for(let i=0;i<p.sources.length;i++){const d=p.sources[i],ref=b.sources[i];const size=new TextEncoder().encode(d.text).length;total+=size;if(d.index!==i||d.url!==ref.url||d.sha256!==ref.sha256||await hashText(d.text)!==ref.sha256||size>16000)throw Error('Stored source commitment mismatch');}if(total>24000)throw Error('Stored source budget exceeded');
+ if(canonical(r.findings)!==canonical(p.findings)||p.findings.length!==p.policy.criteria.length)throw Error('Stored findings mismatch');
+ for(let i=0;i<p.findings.length;i++){const f=p.findings[i];if(f.id!==p.policy.criteria[i].id||!['SATISFIED','VIOLATED','UNKNOWN'].includes(f.state))throw Error('Stored criterion identity or state mismatch');if(f.state==='UNKNOWN'){if(f.source!==-1||f.quote!=='')throw Error('Unknown finding claims a source');}else if(!Number.isInteger(f.source)||!p.sources[f.source]||typeof f.quote!=='string'||!grounded(f.quote,p.sources[f.source].text))throw Error('Stored quotation is not grounded');}
+ const verdict=p.findings.some(f=>f.state==='VIOLATED')?'FAIL':p.findings.some(f=>f.state==='UNKNOWN')?'INCONCLUSIVE':'PASS';if(r.verdict!==verdict||r.error!==''||r.evidence_sha256!==review.sha256)throw Error('Stored verdict mismatch');
+ return {revision:review.revision,sources:p.sources.length,findings:p.findings.length,verdict,packetSha256:r.packet_sha256};
+}
